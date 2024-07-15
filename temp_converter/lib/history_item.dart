@@ -17,13 +17,17 @@ class HistoryItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(history.fromDegree.toString(),
-                style: TextStyle(
-                  color: Colors.red
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(tempValue[history.convertedFrom].toString(),
-                style: TextStyle(
-                  color: Colors.red
+                style: const TextStyle(
+                  color: Colors.black87,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(width: 20),
@@ -32,13 +36,17 @@ class HistoryItem extends StatelessWidget {
               ),
               const SizedBox(width: 20),
               Text(history.toDegree.toString(),
-                style: TextStyle(
-                  color: Colors.red
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(tempValue[history.convertedTo].toString(),
-                style: TextStyle(
-                  color: Colors.red
+                style: const TextStyle(
+                  color: Colors.black87,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],

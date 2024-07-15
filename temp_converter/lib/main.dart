@@ -7,6 +7,7 @@ void main() {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 77, 183, 58)),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       home: const ConverterScreen(),
     ));
 }

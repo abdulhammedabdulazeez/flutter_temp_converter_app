@@ -13,30 +13,30 @@ class ConverterScreen extends StatefulWidget {
 
 class _ConverterScreenState extends State<ConverterScreen> {
   final List<History> histories = [
-    History(
-      fromDegree: 75,
-      convertedFrom: Temperature.celsius,
-      toDegree: 32.5,
-      convertedTo: Temperature.fahrenheit,
-    ),
-    History(
-      fromDegree: 75,
-      convertedFrom: Temperature.celsius,
-      toDegree: 32.5,
-      convertedTo: Temperature.fahrenheit,
-    ),
-    History(
-      fromDegree: 75,
-      convertedFrom: Temperature.celsius,
-      toDegree: 32.5,
-      convertedTo: Temperature.fahrenheit,
-    ),
+    // History(
+    //   fromDegree: 75,
+    //   convertedFrom: Temperature.celsius,
+    //   toDegree: 32.5,
+    //   convertedTo: Temperature.fahrenheit,
+    // ),
+    // History(
+    //   fromDegree: 75,
+    //   convertedFrom: Temperature.celsius,
+    //   toDegree: 32.5,
+    //   convertedTo: Temperature.fahrenheit,
+    // ),
+    // History(
+    //   fromDegree: 75,
+    //   convertedFrom: Temperature.celsius,
+    //   toDegree: 32.5,
+    //   convertedTo: Temperature.fahrenheit,
+    // ),
   ];
 
   void _openTemperatureOverlay() {
     showModalBottomSheet(
       // isScrollControlled: true,
-      
+
       context: context,
       builder: (ctx) => NewTemperature(onAddHistory: addToHistory),
     );
@@ -53,27 +53,51 @@ class _ConverterScreenState extends State<ConverterScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Converter'),
+        backgroundColor: Colors.green.shade200,
+        
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (histories.isNotEmpty)
-              Column(
-                children: [
-                  Text('Result:'),
-                  HistoryItem(history: histories[0])
-                ],
+      body: Container(
+        margin: const EdgeInsets.only(bottom: 80, top: 30),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (histories.isNotEmpty)
+                Column(
+                  children: [
+                    const Text(
+                      'Result:',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    HistoryItem(history: histories[0])
+                  ],
+                ),
+              // const SizedBox(height: 20),
+              const Spacer(),
+              ElevatedButton(
+                onPressed: _openTemperatureOverlay,
+                child: const Text('New Conversion',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold
+                ),
+                ),
               ),
-            ElevatedButton(
-              onPressed: _openTemperatureOverlay,
-              child: const Text('New Conversion'),
-            ),
-            const SizedBox(height: 20),
-             const Text('Whre is my data'),
-            Expanded(child: HistoryList(histories: histories)),
-          ],
+              const Spacer(),
+              // const SizedBox(height: 40),
+              const Text(
+                'History:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 5),
+              if (histories.isEmpty)
+                const Text('Your  conversion history will be displayed here!')
+              else
+                Expanded(child: HistoryList(histories: histories)),
+            ],
+          ),
         ),
       ),
     );
